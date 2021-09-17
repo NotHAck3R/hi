@@ -1,3 +1,37 @@
+--[[
+Change logs:
+
+8/20/21
+   ! This update was provided by Sezei (https://github.com/greasemonkey123/ff-bot-new)
+       * I renamed some stuff and changed their default 'Autoplayer bind'
+
+   + Added 'Miss chance'
+   + Added 'Release delay' (note: higher values means a higher chance to miss)
+   + Added 'Autoplayer bind'
+   * Added new credits
+   * Made folder names more clear
+
+8/2/21
+    ! KRNL has since been fixed, enjoy!
+
+    + Added 'Manual' mode which allows you to force the notes to hit a specific type by holding down a keybind.
+    * Switched fastWait and fastSpawn to Roblox's task libraries
+    * Attempted to fix 'invalid key to next' errors
+
+5/12/21
+    * Attempted to fix the autoplayer missing as much.
+
+5/16/21
+    * Attempt to fix invisible notes.
+    * Added hit chances & an autoplayer toggle
+    ! Hit chances are a bit rough but should work.
+
+Information:
+    Officially supported: Synapse X, Script-Ware, KRNL, Fluxus
+    Needed functions: setthreadcontext, getconnections, getgc, getloaodedmodules 
+
+    You can find contact information on the GitHub repository (https://github.com/wally-rblx/funky-friday-autoplay)
+--]]
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/wally-rblx/uwuware-ui/main/main.lua"))()
 
@@ -175,41 +209,41 @@ runService:BindToRenderStep(shared._id, 1, function()
     end
 end)
 
-local window = library:CreateWindow('you are shit jayify') do
-    local folder = window:AddFolder('Autoshit') do
-        local toggle = folder:AddToggle({ text = 'Autoshit', flag = 'autoPlayer' })
+local window = library:CreateWindow('Shit') do
+    local folder = window:AddFolder('Shit') do
+        local toggle = folder:AddToggle({ text = 'Shit', flag = 'autoPlayer' })
 
         -- Fixed to use toggle:SetState
-        folder:AddBind({ text = 'Autoplayer toggle', flag = 'autoPlayerToggle', key = Enum.KeyCode.End, callback = function() 
+        folder:AddBind({ text = 'AutoShit toggle', flag = 'autoPlayerToggle', key = Enum.KeyCode.End, callback = function() 
             toggle:SetState(not toggle.state)
         end })
 
-        folder:AddList({ text = 'Autoplayer mode', flag = 'autoPlayerMode', values = { 'Chances', 'Manual' } })
+        folder:AddList({ text = 'Shit mode', flag = 'autoPlayerMode', values = { 'Chances', 'Manual' } })
 
-        folder:AddSlider({ text = 'Bad %', flag = 'sickChance', min = 0, max = 100, value = 100 })
-        folder:AddSlider({ text = 'Ok %', flag = 'goodChance', min = 0, max = 100, value = 0 })
-        folder:AddSlider({ text = 'Good %', flag = 'okChance', min = 0, max = 100, value = 0 })
-        folder:AddSlider({ text = 'sick %', flag = 'badChance', min = 0, max = 100, value = 0 })
-        folder:AddSlider({ text = 'Miss %', flag = 'missChance', min = 0, max = 100, value = 0 })
+        folder:AddSlider({ text = 'Miss %', flag = 'sickChance', min = 0, max = 100, value = 100 })
+        folder:AddSlider({ text = 'Bad %', flag = 'goodChance', min = 0, max = 100, value = 0 })
+        folder:AddSlider({ text = 'Ok %', flag = 'okChance', min = 0, max = 100, value = 0 })
+        folder:AddSlider({ text = 'Good %', flag = 'badChance', min = 0, max = 100, value = 0 })
+        folder:AddSlider({ text = 'Sick %', flag = 'missChance', min = 0, max = 100, value = 0 })
         folder:AddSlider({ text = 'Release delay (ms)', flag = 'autoDelay', min = 0, max = 350, value = 50 })
     end
-
-    local folder = window:AddFolder('Manual keybinds') do
-        folder:AddBind({ text = 'Fuck', flag = 'sickBind', key = Enum.KeyCode.One, hold = true, callback = function(val) library.flags.sickHeld = (not val) end, })
-        folder:AddBind({ text = 'Good', flag = 'goodBind', key = Enum.KeyCode.Two, hold = true, callback = function(val) library.flags.goodHeld = (not val) end, })
-        folder:AddBind({ text = 'Ok', flag = 'okBind', key = Enum.KeyCode.Three, hold = true, callback = function(val) library.flags.okayHeld = (not val) end, })
-        folder:AddBind({ text = 'Bad', flag = 'badBind', key = Enum.KeyCode.Four, hold = true, callback = function(val) library.flags.missHeld = (not val) end, })
+    
+    local folder = window:AddFolder('Manual shit') do
+        folder:AddBind({ text = 'Bad', flag = 'sickBind', key = Enum.KeyCode.One, hold = true, callback = function(val) library.flags.sickHeld = (not val) end, })
+        folder:AddBind({ text = 'Ok', flag = 'goodBind', key = Enum.KeyCode.Two, hold = true, callback = function(val) library.flags.goodHeld = (not val) end, })
+        folder:AddBind({ text = 'Good', flag = 'okBind', key = Enum.KeyCode.Three, hold = true, callback = function(val) library.flags.okayHeld = (not val) end, })
+        folder:AddBind({ text = 'Sick', flag = 'badBind', key = Enum.KeyCode.Four, hold = true, callback = function(val) library.flags.missHeld = (not val) end, })
     end
-
+    
     local folder = window:AddFolder('Credits') do
-        folder:AddLabel({ text = 'Nothere_2391 - UI })
-        folder:AddLabel({ text = 'NotHere_2391 - Script' })
+        folder:AddLabel({ text = 'NotHere_2391 - UI library' })
+        folder:AddLabel({ text = 'NotHere_2301 - Script' })
         folder:AddLabel({ text = 'NotHere_2391 - Contributor'})
     end
 
-    window:AddLabel({ text = 'Version NotHere_2319' })
+    window:AddLabel({ text = 'Version: shit' })
     window:AddLabel({ text = 'Updated 69/4/20' })
-    window:AddBind({ text = 'Shit toggle', key = Enum.KeyCode.Delete, callback = function() library:Close() end })
+    window:AddBind({ text = 'Menu toggle', key = Enum.KeyCode.Delete, callback = function() library:Close() end })
 end
 
 library:Init()
